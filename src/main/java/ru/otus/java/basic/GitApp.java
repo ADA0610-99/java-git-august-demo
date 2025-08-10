@@ -2,6 +2,7 @@ package ru.otus.java.basic;
 
 public class GitApp {
     public static void main(String[] args){
+        drawSquare();
         System.out.println(1);
         System.out.println("Hello world!");
         System.out.println(2);
@@ -9,6 +10,12 @@ public class GitApp {
         int a=0;
         int c = a+b;
         System.out.println(c);
+    }
 
+    public static void drawSquare() {
+        System.out.println("-------");
+        System.out.println("-------");
+        System.out.println("-------");
+        System.out.println("-------");
     }
 }
