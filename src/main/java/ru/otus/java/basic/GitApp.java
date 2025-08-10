@@ -10,6 +10,8 @@ public class GitApp {
         int a=0;
         int c = a+b;
         System.out.println(c);
+        System.out.println(1);
+        System.out.println(5);
     }
 
     public static void drawSquare() {
