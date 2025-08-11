@@ -7,13 +7,12 @@ public class GitApp {
         int b = 8;
         int result = a + b;
         System.out.println(a + " - " + b + " = " + result);
-        int f = 9;
+        int d = 9;
 
 
         System.out.println("Суммирование");
-       // int a = 1;
        // int b = 2;
-        int c = a+b+9;
+        int c = a+b+d;
         System.out.println(a + " + " + b + " = " + c);
         System.out.println("Привет!");
 
