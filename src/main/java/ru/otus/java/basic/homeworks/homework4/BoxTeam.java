@@ -19,13 +19,17 @@ public class BoxTeam {
             }
         }
 
-        Box box = new Box(5, 7, "green", true);
+        Box box = new Box(5, 7, 15, "green", true);
         System.out.println(box.toString());
         box.setColor("red");
         System.out.println(box.takeItem());
         System.out.println(box.putItem("CAT"));
         System.out.println(box.putItem("DOG"));
         System.out.println(box.takeItem());
+        box.close();
+        System.out.println(box.putItem("DOG"));
+        box.open();
+        System.out.println(box.putItem("DOG"));
         System.out.println(box.toString());
     }
 }

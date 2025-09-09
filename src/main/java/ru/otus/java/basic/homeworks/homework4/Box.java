@@ -3,16 +3,18 @@ package ru.otus.java.basic.homeworks.homework4;
 public class Box {
     private final int length;
     private final int width;
+    private final int height;
     private String color;
     private boolean open;
-    private String[] item;
+    private String item;
 
-    public Box(int length, int width, String color, boolean open) {
+    public Box(int length, int width, int height, String color, boolean open) {
         this.length = length;
         this.width = width;
+        this.height = height;
         this.color = color;
         this.open = open;
-        this.item = new String[1];
+        this.item = null;
     }
 
     public void setColor(String color) {
@@ -20,30 +22,44 @@ public class Box {
         System.out.println("Цвет коробки: " + this.color);
     }
 
-    public void isOpen(boolean open) {
-        this.open = open;
-        System.out.println("Коробка открыта?: " + this.open);
+    public void open() {
+        this.open = true;
+        System.out.println("Коробка открыта");
     }
 
-    public String putItem (String item){
-        if (this.item[0] == null && this.open == true) {
-            this.item[0] = item;
-            return "В коробку положен " + item;
-        };
-        return "Не удалось положить предмет в коробку";
+    public void close() {
+        this.open = false;
+        System.out.println("Коробка закрыта");
     }
 
-    public String takeItem (){
-        if (this.item[0] != null && this.open == true) {
-            this.item[0] = null;
-            return "Коробку опустошили";
-        };
-        return "Не удалось забрать предмет из коробки";
+    public String putItem(String item) {
+        if (this.open == false) {
+            return "Неудалось положить предмет. Коробка закрыта!";
+        }
+        if (this.item != null) {
+            return "Неудалось положить предмет. Коробка заполнена!";
+        }
+        ;
+        this.item = item;
+        return "В коробку положен " + item;
+    }
+
+    public String takeItem() {
+        if (this.open == false) {
+            return "Не удалось забрать предмет из коробки. Коробка закрыта";
+        }
+        if (this.item == null) {
+            return "Не удалось забрать предмет из коробки. Коробка пуста";
+        }
+        ;
+        this.item = null;
+        return "Коробку опустошили";
     }
 
     public String toString() {
         return ("Длинна: " + length +
                 ", Ширина: " + width +
+                ", Высота: " + height +
                 ", Цвет: " + color +
                 ", Коробка открыта?: " + open);
     }

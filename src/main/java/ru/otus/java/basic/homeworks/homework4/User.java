@@ -22,9 +22,9 @@ public class User {
     public String toString() {
         return (
                 "Surname: " + surname +
-                ", Name: " + name +
-                ", Patronymic: " + patronymic +
-                ", Year: " + year +
-                ", Email: " + email);
+                        ", Name: " + name +
+                        ", Patronymic: " + patronymic +
+                        ", Year: " + year +
+                        ", Email: " + email);
     }
 }
