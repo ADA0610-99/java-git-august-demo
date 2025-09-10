@@ -14,6 +14,7 @@ public class Hors extends Animal {
         this.exhaustionRateForSwim = 4;
     }
 
+
     public int swim(int distance) {
         int time = distance / this.swimSpeed;
         this.endurance = this.endurance - (distance * exhaustionRateForSwim);
@@ -24,6 +25,7 @@ public class Hors extends Animal {
         System.out.println("Животное проплыло:" + distance + " - за " + time + " секунд");
         return time;
     }
+
 
     public void info() {
         System.out.println(this.name +

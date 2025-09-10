@@ -21,6 +21,7 @@ public class Dog extends Animal {
         return time;
     }
 
+
     public void info() {
         System.out.println(this.name +
                 " имеет единиц выносливости: " + this.endurance +
