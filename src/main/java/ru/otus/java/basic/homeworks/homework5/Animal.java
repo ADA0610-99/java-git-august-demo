@@ -14,10 +14,10 @@ public class Animal {
         this.exhaustionRateForRun = 1;
     }
 
-    public int run (int distance){
-        int time = distance/this.runSpeed;
+    public int run(int distance) {
+        int time = distance / this.runSpeed;
         this.endurance = this.endurance - (distance * exhaustionRateForRun);
-        if (this.endurance <= 0){
+        if (this.endurance <= 0) {
             System.out.println("У животного появилось состояние усталости");
             return -1;
         }

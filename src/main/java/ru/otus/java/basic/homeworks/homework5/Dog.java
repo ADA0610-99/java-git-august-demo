@@ -10,10 +10,10 @@ public class Dog extends Animal {
         this.exhaustionRateForSwim = 2;
     }
 
-    public int swim (int distance){
-        int time = distance/this.swimSpeed;
+    public int swim(int distance) {
+        int time = distance / this.swimSpeed;
         this.endurance = this.endurance - (distance * exhaustionRateForSwim);
-        if (this.endurance <= 0){
+        if (this.endurance <= 0) {
             System.out.println("У животного появилось состояние усталости");
             return -1;
         }
