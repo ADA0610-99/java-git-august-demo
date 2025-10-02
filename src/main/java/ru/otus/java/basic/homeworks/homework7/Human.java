@@ -24,17 +24,18 @@ public class Human {
     }
 
 
-    public void drive(int distance) {
+    public boolean drive(int distance) {
         if ((this.resourse == 0) || (this.resourse < (distance * 3))) {
             System.out.println("не хватает ресурса!");
-            return;
+            return false;
         }
         resourse -= distance;
-        System.out.println("Человек идет" + distance + " миль. Сил осталось: " + this.resourse);
+        if (currentTransport instanceof Bike) {
+            System.out.println("Человек проехал на велосипеде" + distance + " миль. Сил осталось: " + this.resourse);
+            return true;
+        }
+        System.out.println("Человек прошел" + distance + " миль. Сил осталось: " + this.resourse);
+        return true;
     }
 
-    public void drive(int distance, String str) {
-        resourse -= distance;
-        System.out.println(str + resourse);
-    }
 }

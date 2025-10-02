@@ -1,7 +1,7 @@
 package ru.otus.java.basic.homeworks.homework7;
 
 public interface Transport {
-    void drive(int distance);
+    boolean drive(int distance);
 
     boolean isActive();
 

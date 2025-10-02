@@ -29,18 +29,19 @@ public class Horse implements Transport {
     }
 
     @Override
-    public void drive(int distance) {
+    public boolean drive(int distance) {
         if (!this.isActive) {
             System.out.println("Сначала сядь на лошадь!");
-            return;
+            return false;
         }
         if (this.resource == 0 || this.resource < (distance * 0.5)) {
             System.out.println("не хватает ресурса!");
-            return;
+            return false;
         }
         this.resource -= (int) (distance * 0.5);
         System.out.println("Человек проскакал на лошади " + distance
                 + " миль. Сил у лошади осталось: "
                 + this.resource);
+        return true;
     }
 }

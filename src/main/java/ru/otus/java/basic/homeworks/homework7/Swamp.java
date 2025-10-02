@@ -9,16 +9,8 @@ public class Swamp implements Terrain {
 
     @Override
     public void doIt(Transport transport) {
-        if (transport instanceof Car) {
-            System.out.println("Машина не может ехать по болоту!");
-            return;
-        }
-        if (transport instanceof Bike) {
-            System.out.println("Велосипед не может ехать по болоту!");
-            return;
-        }
-        if (transport instanceof Horse) {
-            System.out.println("Лошадь не может ехать по болоту!");
+        if (transport instanceof Car || transport instanceof Bike || transport instanceof Horse) {
+            System.out.println(transport.getClass().getSimpleName() + " не может ехать по болоту!");
             return;
         }
         transport.drive(this.distance);

@@ -30,16 +30,12 @@ public class Bike implements Transport {
     }
 
     @Override
-    public void drive(int distance) {
+    public boolean drive(int distance) {
         if (!this.isActive) {
             System.out.println("Сначала сядь на велик!");
-            return;
+            return false;
         }
-        if (this.human1.getResourse() == 0 || this.human1.getResourse() < (distance * 3)) {
-            System.out.println("не хватает ресурса!");
-            return;
-        }
-        human1.drive(distance, "Человек проехал на велосипеде " + distance
-                + " миль. Сил у человека осталось: ");
+        human1.drive(distance);
+        return true;
     }
 }
