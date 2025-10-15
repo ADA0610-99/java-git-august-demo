@@ -3,6 +3,7 @@ package ru.otus.java.basic.homeworks.homework11;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedHashSet;
+import java.util.Map;
 
 public class Application {
     public static void main(String[] args) {
@@ -14,7 +15,7 @@ public class Application {
         Person vasya = new Person("Vasilyi", Position.PLUMBER);
         Person dasha = new Person("Darya", Position.JUNIOR_DEVELOPER);
 
-        LinkedHashSet<Person> people = new LinkedHashSet<>();
+        /*LinkedHashSet<Person> people = new LinkedHashSet<>();
         people.add(masha);
         people.add(misha);
         people.add(katya);
@@ -22,18 +23,27 @@ public class Application {
         people.add(vasya);
         people.add(dasha);
 
-        PersonDataBase dataBase = new PersonDataBase(people);
+         */
 
-        for (Person person : dataBase.getPersons()) {
-            System.out.println(person.toString());
+        PersonDataBase dataBase = new PersonDataBase();
+        dataBase.add(masha);
+        dataBase.add(misha);
+        dataBase.add(katya);
+        dataBase.add(olya);
+        dataBase.add(vasya);
+        dataBase.add(dasha);
+
+
+        for (Map.Entry<Long, Person> per : dataBase.getPersonMap().entrySet()) {
+            System.out.println(per.toString());
         }
 
-        System.out.println(dataBase.findById(4L));
+        System.out.println(dataBase.findById(4L).toString());
         Person pit = new Person("Piter", Position.JANITOR);
         dataBase.add(pit);
 
-        for (Person person : dataBase.getPersons()) {
-            System.out.println(person.toString());
+        for (Map.Entry<Long, Person> per : dataBase.getPersonMap().entrySet()) {
+            System.out.println(per.toString());
         }
 
         System.out.println(dataBase.isEmployee(6L));
