@@ -4,7 +4,7 @@ import java.util.*;
 
 public class PersonDataBase {
     private Map<Long, Person> personMap;
-    private final List<Position> managers = new ArrayList<>(
+    private final Set<Position> managers = new HashSet<>(
             Arrays.asList(
                     Position.MANAGER,
                     Position.DIRECTOR,

@@ -15,16 +15,6 @@ public class Application {
         Person vasya = new Person("Vasilyi", Position.PLUMBER);
         Person dasha = new Person("Darya", Position.JUNIOR_DEVELOPER);
 
-        /*LinkedHashSet<Person> people = new LinkedHashSet<>();
-        people.add(masha);
-        people.add(misha);
-        people.add(katya);
-        people.add(olya);
-        people.add(vasya);
-        people.add(dasha);
-
-         */
-
         PersonDataBase dataBase = new PersonDataBase();
         dataBase.add(masha);
         dataBase.add(misha);
