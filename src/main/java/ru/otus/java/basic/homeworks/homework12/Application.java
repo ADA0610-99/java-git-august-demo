@@ -19,7 +19,7 @@ public class Application {
         File file3 = new File("threeFile.txt");
         writer(str3, file3);
 
-        File parent = new File("C:/Users/UserPC/IdeaProjects/java-git-demo");
+        File parent = new File(System.getProperty("user.dir"));
 
         File[] files = parent.listFiles(new FilenameFilter() {
             @Override
