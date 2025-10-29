@@ -8,7 +8,7 @@ public class Application {
     public static void main(String[] args) {
         Instant start = Instant.now();
 
-        transformationArray();
+        transformationArrayCreate();
 
         Instant end = Instant.now();
         System.out.println("Время выполнения: " + Duration.between(start, end).toMillis() + " мс");
@@ -22,7 +22,7 @@ public class Application {
 
     }
 
-    public static double[] transformationArray() {
+    public static double[] transformationArrayCreate() {
         double[] doubles = new double[100_000_000];
         for (int i = 0; i < doubles.length; i++) {
             doubles[i] = 1.14 * Math.cos(i) * Math.sin(i * 0.2) * Math.cos(i / 1.2);
@@ -30,41 +30,42 @@ public class Application {
         return doubles;
     }
 
-    public static double[] flowTransformationArray() {
-        double[] doubles = new double[100_000_000];
-        Thread t1 = new Thread(() -> {
-            for (int i = 0; i < doubles.length / 4; i++) {
-                doubles[i] = 1.14 * Math.cos(i) * Math.sin(i * 0.2) * Math.cos(i / 1.2);
-            }
-        });
-        Thread t2 = new Thread(() -> {
-            for (int i = doubles.length / 4; i < 2 * (doubles.length / 4); i++) {
-                doubles[i] = 1.14 * Math.cos(i) * Math.sin(i * 0.2) * Math.cos(i / 1.2);
-            }
-        });
-        Thread t3 = new Thread(() -> {
-            for (int i = 2 * (doubles.length / 4); i < 3 * (doubles.length / 4); i++) {
-                doubles[i] = 1.14 * Math.cos(i) * Math.sin(i * 0.2) * Math.cos(i / 1.2);
-            }
-        });
-        Thread t4 = new Thread(() -> {
-            for (int i = 3 * (doubles.length / 4); i < doubles.length; i++) {
-                doubles[i] = 1.14 * Math.cos(i) * Math.sin(i * 0.2) * Math.cos(i / 1.2);
-            }
-        });
-        try {
-            t1.start();
-            t2.start();
-            t3.start();
-            t4.start();
-            t1.join();
-            t2.join();
-            t3.join();
-            t4.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+    public static double[] transformationArray(double[] doubles, int start, int end) {
+        for (int i = start; i < end; i++) {
+            doubles[i] = 1.14 * Math.cos(i) * Math.sin(i * 0.2) * Math.cos(i / 1.2);
         }
         return doubles;
     }
+
+    public static double[] flowTransformationArray() {
+        double[] doubles = new double[100_000_000];
+        Thread[] treads = new Thread[4];
+        treads[0] = new Thread(() -> {
+            transformationArray(doubles, 0, doubles.length / 4);
+        });
+        treads[1] = new Thread(() -> {
+            transformationArray(doubles, doubles.length / 4, 2 * (doubles.length / 4));
+        });
+        treads[2] = new Thread(() -> {
+            transformationArray(doubles, 2 * (doubles.length / 4), 3 * (doubles.length / 4));
+        });
+        treads[3] = new Thread(() -> {
+            transformationArray(doubles, 3 * (doubles.length / 4), doubles.length);
+        });
+
+        for (int i = 0; i < treads.length; i++) {
+            treads[i].start();
+        }
+
+        try {
+            for (int i = 0; i < treads.length; i++) {
+                treads[i].join();
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+            return doubles;
 }
+    }
 
